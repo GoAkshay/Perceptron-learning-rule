@@ -18,7 +18,10 @@ def get_input_data():
         x = np.array(list(map(float, input(f"Enter values for X{i+1}: ").split()))).reshape(-1, 1)
         xlist.append(x)
     
+    # Ensure the number of desired outputs matches the number of datasets
     d = np.array(list(map(int, input("Enter desired outputs d: ").split())))
+    if len(d) != n:
+        raise ValueError(f"Expected {n} desired outputs, but got {len(d)}. Please provide {n} outputs.")
     
     return c, n, xlist, wlist, d
 
